@@ -1,2 +1,6 @@
 #!/bin/bash
+<<<<<<< HEAD
 export PATH="$PATH:/action"
+=======
+PATH-$PATH:/action
+>>>>>>> e3d665fa2f9b8b980c319f3ef0aafb8e8b0c667a
