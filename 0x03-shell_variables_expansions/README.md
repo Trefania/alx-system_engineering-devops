@@ -13,3 +13,4 @@ There are 10 types of people in the world -- Those who understand binary, and th
 Combination
 Floats
 Global variable
+If the path be beautiful, let us not ask where it leads
