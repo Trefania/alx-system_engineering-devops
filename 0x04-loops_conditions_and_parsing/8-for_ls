@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#Creating a script that lists files
+
+list=$(ls)
+
+for n in $list;
+do
+	echo "$n" | cut -f 2- -d '-'
+done
