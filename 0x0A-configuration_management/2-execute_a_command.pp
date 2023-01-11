@@ -3,6 +3,6 @@
 #Must use pkill
 
 exec { 'killmenow':
-path => ['/usr/bin']
+path    => ['/usr/bin']
 command => 'pkill -f killmenow'
 }
