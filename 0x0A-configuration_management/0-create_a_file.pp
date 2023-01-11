@@ -1,4 +1,4 @@
-# create a file in root dir
+# create a file in root dir.
 file { '/tmp/school':
 ensure => 'file',
 owner => 'www-data',
