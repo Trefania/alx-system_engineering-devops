@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+# Install nginx on your web-01
+sudo apt update -y
+#installing nginx
+sudo apt install nginx -y
+#making  directories
+sudo mkdir -p /var/www/html
+#creating file that contain our string
+sudo touch /var/www/html/index.html
+# Change ownership of file and directories to current user to permit edits
+sudo chown -R "$USER":"$USER" /var/www/html/index.html
+#add a str to our file
+echo "Hello World!" >/var/www/html/index.html
+#allowing firewall to get external request
+sudo ufw allow 'Nginx HTTP'
+
+SERVER_CONFIG="server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+	root /var/www/html;
+	index index.html index.htm index.nginx-debian.html;
+	server_name _;
+	location / {
+		try_files \$uri \$uri/ =404;
+	}
+	if (\$request_filename ~ redirect_me){
+		return 301 https://github.com/Trefania;
+	}
+}"
+
+echo -e "$SERVER_CONFIG" >/etc/nginx/sites-enabled/default
+
+# You can’t use systemctl for restarting nginx
+sudo service nginx restart
