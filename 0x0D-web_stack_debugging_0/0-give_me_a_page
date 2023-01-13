@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 # A command that does not return the error messgaes
+sed -i s/"#ServerName www.example.com"/"ServerName localhost"/g /etc/apache2.conf
 sudo service apache2 start
