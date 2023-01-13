@@ -5,6 +5,7 @@ sudo apt update -y
 sudo apt install nginx -y
 #making  directories
 sudo mkdir -p /var/www/html
+
 #creating file that contain our string
 sudo touch /var/www/html/index.html
 sudo touch /var/www/html/custom_404.html
@@ -19,7 +20,7 @@ echo "Ceci n'est pas une page" >/var/www/html/custom_404.html
 #allowing firewall to get external request
 sudo ufw allow 'Nginx HTTP'
 
-redirect="
+SERVER_CONFIG="
 server {
 	listen 80 default_server;
 	listen [::]:80 default_server;
