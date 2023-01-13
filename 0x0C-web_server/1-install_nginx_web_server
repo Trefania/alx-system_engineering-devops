@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Install nginx on your web-01
 sudo apt update -y
-#installing nginx
+#installing nginx.
 sudo apt install nginx -y
 #making  directories
 sudo mkdir -p /var/www/html
