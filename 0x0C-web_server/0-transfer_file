@@ -14,7 +14,7 @@ SSH_KEY=$4
 if [ $# -eq 4 ]; then # If number of args = 4
 	# -o flag is used to pass various ssh_options run `man scp` for more info
 	# -i flag points to the path of the ssh key
-	scp -o StrictHostKeyChecking=no -i "$SSH_KEY" "$FILE_PATH" "$USERNAME@$SERVER_IP:~/"
+	scp -o StrictHostKeyChecking=no -i "$SSH_KEY" "$FILE_PATH" "$USERNAME@$SERVER_IP":~/;
 else
-	echo "Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
+	echo "Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY";
 fi
