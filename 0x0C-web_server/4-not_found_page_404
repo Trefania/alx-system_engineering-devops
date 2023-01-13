@@ -1,24 +1,22 @@
 #!/usr/bin/env bash
 # Install nginx on your web-01
-sudo apt update -y
-#installing nginx
-sudo apt install nginx -y
-#making  directories
-sudo mkdir -p /var/www/html
+apt-get update
+apt-get -y install nginx
 
-#creating file that contain our string
-sudo touch /var/www/html/index.html
-sudo touch /var/www/html/custom_404.html
+# Nginx listens by default on Port 80.
+# ufw firewall to get requests
+ufw allow 'Nginx HTTP'
 
-# Change ownership of file and directories to current user to permit edits
-sudo chown -R "$USER":"$USER" /var/www/html/index.html
-sudo chown -R "$USER":"$USER" /var/www/html/custom_404.html
-#add a str to our file
-echo "Hello World!" >/var/www/html/index.html
+# Create Directory and Change Ownership
+mkdir -p /var/www/html
+touch /var/www/html/custom_404.html
+
+chown -R "$USER":"$USER" /var/www/html/index.html
+chown -R "$USER":"$USER" /var/www/html/custom_404.html
+
+# Page Content
+echo "Hello World!" > /var/www/html/index.html
 echo "Ceci n'est pas une page" >/var/www/html/custom_404.html
-
-#allowing firewall to get external request
-sudo ufw allow 'Nginx HTTP'
 
 SERVER_CONFIG="
 server {
