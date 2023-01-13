@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# The Script contains a command that does not return the error messgae
+sudo service apache2 start
