@@ -66,15 +66,3 @@ fi
 
 sudo service haproxy restart
 
-# # if configuration fails, revert
-# VAL=$(echo $?)
-# echo $VAL
-
-# if [ "$VAL" -eq 1 ]; then
-# 	printf "Reverting . . .\n"
-# 	cp "$HAPROXY_INIT".bak "$HAPROXY_INIT"
-# 	cp "$HAPROXY_CONFIG".bak "$HAPROXY_CONFIG"
-# 	print "Done\n"
-# else
-# 	printf "Configuration Successful\n"
-# fi
