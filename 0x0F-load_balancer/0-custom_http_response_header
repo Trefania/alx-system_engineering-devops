@@ -10,3 +10,4 @@ sed -i '/^\tserver_name _.*/a \\trewrite ^/redirect_me https://www.youtube.com/w
 echo "Ceci n'est pas une page" > /var/www/html/error404.html
 sed -i '/^\tserver_name _.*/a \\terror_page 404 /error404.html;' /etc/nginx/sites-available/default
 service nginx restart
+
