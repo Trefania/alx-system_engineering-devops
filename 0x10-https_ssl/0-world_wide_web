@@ -16,3 +16,4 @@ elif [ "$#" == 2 ]
 then
   dns_config "$1" "$2"
 fi
+
