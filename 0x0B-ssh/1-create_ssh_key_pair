@@ -4,3 +4,4 @@
 # The created key must be protected by the passphrase betty
 
 ssh-keygen -trsa -b 4096 -N betty -f school
+
