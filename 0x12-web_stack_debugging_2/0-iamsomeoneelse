@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # write a Bash script that accepts one argument
 # the script should run the whoami command under the user passed as an argument
-# make sure to try your script by passing different use
+# make sure to try your script by passing different use.
 
-sudo -H -u "$1" bash -c "whoami"
+sudo -H -u "$1" bash -c 'whoami'
