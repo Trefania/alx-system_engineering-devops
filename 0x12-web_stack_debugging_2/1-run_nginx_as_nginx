@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# nginx should be our user
+#destroy apache2
+sudo pkill apache2
+# ownership changed and permission to read and wirte to the configuration file
+chmod 644 /etc/nginx/nginx.conf
+sed -i "s/#user www-data/user nginx/" /etc/nginx/nginx.conf
+# replace port 80 with 8080 in the sites-available config
+sed -i "s/80/8080/g" /etc/nginx/sites-available/default
+# restarting service as the user nginx
+sudo -u nginx service nginx start
