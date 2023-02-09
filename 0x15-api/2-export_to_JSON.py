@@ -8,8 +8,8 @@ import sys
 
 if __name__ == '__main__':
     employeeId = sys.argv[1]
-    baseUrl = "https://jsonplaceholder.typicode.com/users"
-    url = baseUrl + "/" + employeeId
+    site_Url = "https://jsonplaceholder.typicode.com/users"
+    url = site_Url + "/" + employeeId
 
     response = requests.get(url)
     username = response.json().get('username')
@@ -18,12 +18,12 @@ if __name__ == '__main__':
     response = requests.get(todoUrl)
     tasks = response.json()
 
-    dictionary = {employeeId: []}
+    dict = {employeeId: []}
     for task in tasks:
-        dictionary[employeeId].append({
+        dict[employeeId].append({
             "task": task.get('title'),
             "completed": task.get('completed'),
             "username": username
         })
     with open('{}.json'.format(employeeId), 'w') as filename:
-        json.dump(dictionary, filename)
+        json.dump(dict, filename)
