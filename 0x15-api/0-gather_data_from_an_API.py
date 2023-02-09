@@ -30,3 +30,4 @@ if __name__ == '__main__':
 
     for task1 in completed_tasks:
         print("\t {}".format(task1.get('title')))
+
