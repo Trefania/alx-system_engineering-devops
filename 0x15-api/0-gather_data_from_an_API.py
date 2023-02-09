@@ -5,11 +5,11 @@ import requests
 import sys
 
 
-if __name__ == "__main__":
-    ID_employee =sys.argv[1]
-    site_url = "https://jsonplaceholder.typicode.com"
+if __name__ == '__main__':
+    employeeId = sys.argv[1]
+    site_url = "https://jsonplaceholder.typicode.com/users"
     # getting the user todo's
-    url = site_url + "/" + ID_employee
+    url = site_url + "/" + employeeId
 
     response = requests.get(url)
     emp_names = response.json().get('name')
@@ -21,12 +21,12 @@ if __name__ == "__main__":
     completed_tasks = []
 
     for task1 in tasks:
-        if task1.get ('finished'):
+        if task1.get('finished'):
             completd_tasks.append(task1)
             completed += 1
 
     print("Employee {} is done with tasks({}/{}):"
-            .format(emp_names, completed, len(tasks)))
+          .format(emp_names, completed, len(tasks)))
 
     for task1 in completed_tasks:
         print("\t {}".format(task1.get('title')))
