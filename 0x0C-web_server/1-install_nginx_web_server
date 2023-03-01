@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Install nginx on your web-01
+sudo apt update -y
+#installing nginx.
+sudo apt install nginx -y
+#making  directories
+sudo mkdir -p /var/www/html
+#creating file that contain our string
+sudo touch /var/www/html/index.html
+sudo chown -R "$USER":"$USER" /var/www/html/index.html
+echo "Hello World!" >/var/www/html/index.html
+sudo ufw allow 'Nginx HTTP'
+sudo service nginx restart

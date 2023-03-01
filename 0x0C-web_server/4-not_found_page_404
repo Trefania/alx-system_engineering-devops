@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+# Install nginx on your web-01
+apt-get update
+apt-get -y install nginx
+
+# Nginx listens by default on Port 80.
+# ufw firewall to get requests
+ufw allow 'Nginx HTTP'
+
+# Create Directory and Change Ownership
+mkdir -p /var/www/html
+touch /var/www/html/custom_404.html
+
+chown -R "$USER":"$USER" /var/www/html/index.html
+chown -R "$USER":"$USER" /var/www/html/custom_404.html
+
+# Page Content
+echo "Hello World!" > /var/www/html/index.html
+echo "Ceci n'est pas une page" >/var/www/html/custom_404.html
+
+SERVER_CONFIG="
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+	root /var/www/html;
+	index index.html index.htm index.nginx-debian.html;
+	server_name _;
+	location / {
+		try_files \$uri \$uri/ =404;
+	}
+	if (\$request_filename ~ redirect_me){
+		return 301 https://github.com/Trefania;
+	}
+	error_page 404 /custom_404.html;
+		location /custom_404.html {
+				root /var/www/html;
+				internal;
+				}
+}"
+
+echo -e "$SERVER_CONFIG" >/etc/nginx/sites-enabled/default
+
+# You can’t use systemctl for restarting nginx
+sudo service nginx restart
