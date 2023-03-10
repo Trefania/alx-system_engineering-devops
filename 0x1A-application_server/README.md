@@ -260,5 +260,4 @@ Repo:
 
 GitHub repository: alx-system_engineering-devops
 Directory: 0x1A-application_server
-File: 5-app_server-nginx_config
-   
+File: 5-app_server-nginx_config...
